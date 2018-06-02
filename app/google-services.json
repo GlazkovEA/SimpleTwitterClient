@@ -1,0 +1,81 @@
+{
+  "project_info": {
+    "project_number": "620347989822",
+    "firebase_url": "https://simpletwitterclient.firebaseio.com",
+    "project_id": "simpletwitterclient",
+    "storage_bucket": "simpletwitterclient.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620347989822:android:6e8b2211dfb832c0",
+        "android_client_info": {
+          "package_name": "com.homounikumus1.simpletwitterclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620347989822-fssdg1r39lpmpedqfoagolta4pv37tb4.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "620347989822-fssdg1r39lpmpedqfoagolta4pv37tb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ0REyBQIavRJnaLc0D5SUpEgi1firoMs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620347989822:android:1edb5d3cefd468bd",
+        "android_client_info": {
+          "package_name": "homounikumus1.com.simpletwitterclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620347989822-fssdg1r39lpmpedqfoagolta4pv37tb4.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "620347989822-fssdg1r39lpmpedqfoagolta4pv37tb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ0REyBQIavRJnaLc0D5SUpEgi1firoMs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

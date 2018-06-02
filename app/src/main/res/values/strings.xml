@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Twitter</string>
+
+    <string name="hashtag" translatable="false">#SimpleTwitterClient</string>
+
+    <!-- key/secret -->
+    <string name="twitter_consumer_key" translatable="false">TsMknBt2QRw1wPn1e3y1dMltN</string>
+    <string name="twitter_consumer_secret" translatable="false">TX9ppuLHLci97HuUVslDzmLgjT3rUrjqQyT6b9WpHFtlBLW6dG</string>
+
+    <!-- edit view -->
+    <string name="need">Need something?</string>
+    <string name="search">Your search</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter">You didn\'t enter anything</string>
+
+    <!-- buttons -->
+    <string name="home">home</string>
+    <string name="user_tweets">user tweets</string>
+    <string name="tweet">tweet</string>
+
+
+</resources>
