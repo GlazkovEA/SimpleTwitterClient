@@ -2,7 +2,7 @@
 This app can:
 -get your home time line
 -get some users time line
--get your oun time line
+-get your own time line
 -post some tweet
 -searching tweets
 
