@@ -22,16 +22,12 @@ import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
-
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeTimelineFragment extends Fragment {
-    private CustomTweetTimelineListAdapter adapter;
-    private ProgressBar bar;
-    private View rootView;
 
     public HomeTimelineFragment() {
         // Required empty public constructor
@@ -47,36 +43,11 @@ public class HomeTimelineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_twits, container, false);
-        bar = rootView.findViewById(R.id.progress_bar);
+        final View rootView = inflater.inflate(R.layout.fragment_twits, container, false);
+        final ProgressBar bar = rootView.findViewById(R.id.progress_bar);
 
         final SwipeRefreshLayout swipeLayout = rootView.findViewById(R.id.swipe_layout);
 
-        getTimeline();
-
-        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeLayout.setRefreshing(true);
-                adapter.refresh(new Callback<TimelineResult<Tweet>>() {
-                    @Override
-                    public void success(Result<TimelineResult<Tweet>> result) {
-                        swipeLayout.setRefreshing(false);
-                        getTimeline();
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        // Toast or some other action
-                    }
-                });
-            }
-        });
-
-        return rootView;
-    }
-
-    private void getTimeline () {
         final ListView listView = rootView.findViewById(R.id.recycler_view);
 
         TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
@@ -93,9 +64,26 @@ public class HomeTimelineFragment extends Fragment {
                         .setTweets(listResult.data)
                         .build();
 
-                adapter = new CustomTweetTimelineListAdapter(getActivity().getBaseContext(), userTimeline);
-
+                final CustomTweetTimelineListAdapter adapter = new CustomTweetTimelineListAdapter(getActivity().getBaseContext(), userTimeline);
                 listView.setAdapter(adapter);
+
+                swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        swipeLayout.setRefreshing(true);
+                        adapter.refresh(new Callback<TimelineResult<Tweet>>() {
+                            @Override
+                            public void success(Result<TimelineResult<Tweet>> result) {
+                                swipeLayout.setRefreshing(false);
+                            }
+
+                            @Override
+                            public void failure(TwitterException exception) {
+                                // Toast or some other action
+                            }
+                        });
+                    }
+                });
 
                 bar.setVisibility(View.GONE);
             }
@@ -105,6 +93,9 @@ public class HomeTimelineFragment extends Fragment {
                 // Log.e("Error","Error");
             }
         });
+
+
+        return rootView;
     }
 
     class CustomTweetTimelineListAdapter extends TweetTimelineListAdapter {
