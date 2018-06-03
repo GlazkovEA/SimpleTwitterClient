@@ -15,7 +15,7 @@
     <string name="enter">You didn\'t enter anything</string>
 
     <!-- buttons -->
-    <string name="home">home</string>
+    <string name="home">Home</string>
     <string name="user_tweets">user tweets</string>
     <string name="tweet">tweet</string>
 

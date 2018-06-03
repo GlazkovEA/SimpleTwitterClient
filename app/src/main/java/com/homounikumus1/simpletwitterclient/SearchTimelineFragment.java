@@ -3,6 +3,8 @@ package com.homounikumus1.simpletwitterclient;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TimelineResult;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+
+import java.util.Objects;
 
 
 /**
@@ -30,7 +34,10 @@ public class SearchTimelineFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        TwitterActivity.fragment = 4;
+        TwitterActivity.fragment = 2;
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(getString(R.string.search));
     }
 
 

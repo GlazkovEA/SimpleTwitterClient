@@ -3,6 +3,8 @@ package com.homounikumus1.simpletwitterclient;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +36,9 @@ public class UserTimelineFragment extends Fragment {
     public void onStart() {
         super.onStart();
         TwitterActivity.fragment = 2;
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(userName);
     }
 
     @Override

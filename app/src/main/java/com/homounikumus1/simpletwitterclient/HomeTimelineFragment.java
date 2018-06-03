@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +40,9 @@ public class HomeTimelineFragment extends Fragment {
     public void onStart() {
         super.onStart();
         TwitterActivity.fragment = 1;
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setTitle(getString(R.string.home));
     }
 
     @Override
@@ -64,7 +70,7 @@ public class HomeTimelineFragment extends Fragment {
                         .setTweets(listResult.data)
                         .build();
 
-                final CustomTweetTimelineListAdapter adapter = new CustomTweetTimelineListAdapter(getActivity().getBaseContext(), userTimeline);
+                final CustomTweetTimelineListAdapter adapter = new CustomTweetTimelineListAdapter(rootView.getContext(), userTimeline);
                 listView.setAdapter(adapter);
 
                 swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -95,6 +101,8 @@ public class HomeTimelineFragment extends Fragment {
         });
 
 
+
+
         return rootView;
     }
 
@@ -113,7 +121,8 @@ public class HomeTimelineFragment extends Fragment {
                 public void onClick(View v) {
                     final Tweet tweet = getItem(position);
                     User user = tweet.user;
-                    Fragment fragment = SomeUserTwitsFragment.newInstance(user.getId());
+                    Fragment fragment = SomeUserTwitsFragment.newInstance(user.getId()
+                    , user.name);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.container, fragment, "visible_fragment");
                     ft.addToBackStack(null);
